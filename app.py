@@ -1,18 +1,5 @@
 from flask import Flask, render_template, redirect, url_for, request, flash
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
-from werkzeug.security import generate_password_hash, check_password_hash
-from werkzeug.utils import secure_filename
-from models import db, User, Project, Skill, Profile, Education, Message
-import os
-
-app = Flask(__name__)
-app.config['SECRET_KEY'] = 'your_secret_key_here' # Change this to a random secret key
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///portfolio.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['UPLOAD_FOLDER'] = 'static/images'
-app.config['ALLOWED_EXTENSIONS'] = {'png', 'jpg', 'jpeg', 'gif'}
-
-def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
 
