@@ -1,0 +1,30 @@
+/* Card Hover Effect */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 576px) {
+    .card-title {
+        font-size: 1.1rem;
+    }
+    .card-text {
+        font-size: 0.9rem;
+    }
+    
+    /* Ensure images don't overflow */
+    .img-fluid {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+/* Ensure cards in a row have equal height */
+.card.h-100 {
+    height: 100%;
+}
