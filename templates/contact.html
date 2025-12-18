@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-    Contact
+Contact
 {% endblock %}
 
 {% block content %}
@@ -10,16 +10,25 @@
 
   <div class="row">
     <!-- Contact + Social Media Section -->
-    <div class="col-md-12 bg-primary text-white p-4 rounded">
+    <div class="col-md-5 bg-primary text-white p-4 rounded">
       <h4 class="text-center">Connect with me</h4>
       <h5 class="text-dark">Phone:</h5>
+      {% if profile and profile.phone %}
+      <p>{{ profile.phone }}</p>
+      {% else %}
       <p>+254 745 744 806 </p>
+      {% endif %}
+
       <h5 class="text-dark">Email:</h5>
+      {% if profile and profile.email %}
+      <p>{{ profile.email }}</p>
+      {% else %}
       <p>simonkamau@gmail.com</p>
+      {% endif %}
 
       <div class="mt-4">
         <a href="https://github.com/symonmaina" class="text-white me-4" target="_blank">
-          <i class="fab fa-github fa-2x"></i> 
+          <i class="fab fa-github fa-2x"></i>
         </a>
         <a href="https://www.linkedin.com/in/simon-maina-03636b2a6" class="text-white me-4" target="_blank">
           <i class="fab fa-linkedin fa-2x"></i>
@@ -33,10 +42,30 @@
       </div>
     </div>
 
-    <!-- Empty Column (optional space or future use) -->
-    
-
-      
+    <!-- Contact Form Section -->
+    <div class="col-md-7">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title text-center mb-4">Send me a message</h4>
+          <form method="POST">
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="mb-3">
+              <label for="message" class="form-label">Message</label>
+              <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+            </div>
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary">Send Message</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 </div>

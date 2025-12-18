@@ -1,53 +1,29 @@
 {% extends "base.html" %}
 {% block title %}
-    PROJECTS
+PROJECTS
 {% endblock %}
 
 {% block content %}
 <h2>These are some of my projects</h2>
 <div class="container mt-5">
   <div class="row">
-    <!-- Section 1: Portfolio Website -->
+    {% for project in projects %}
     <div class="col-md-4 mb-4">
       <div class="card h-100">
-        <img src="{{ url_for('static', filename='images/portifolio.png') }}" class="card-img-top" alt="Portfolio Website">
-        <div class="card-body bg-secondary">
-          <h5 class="card-title">Portfolio Website</h5>
+        <img src="{{ url_for('static', filename='images/' + project.image_file) }}" class="card-img-top"
+          alt="{{ project.title }}" style="height: 200px; object-fit: cover;">
+        <div class="card-body bg-secondary text-white h-100 d-flex flex-column">
+          <h5 class="card-title">{{ project.title }}</h5>
           <p class="card-text">
-            A personal portfolio website built with Flask and Bootstrap to showcase my skills, experience, and projects.
+            {{ project.description }}
           </p>
-          <a href="#" class="btn btn-primary">View Project</a>
+          {% if project.link %}
+          <a href="{{ project.link }}" class="btn btn-primary mt-auto" target="_blank">View Project</a>
+          {% endif %}
         </div>
       </div>
     </div>
-    <!-- Section 2: E-commerce Platform -->
-    <div class="col-md-4 mb-4">
-      <div class="card h-100">
-        <img src="{{ url_for('static', filename='images/classApp.png') }}" class="card-img-top" alt="classScheduler">
-        <div class="card-body b-secondary">
-          <h5 class="card-title">E-commerce Platform</h5>
-          <p class="card-text">
-            A mobile application I build using java and Android Studio, designed to help campus students to run their class schedules efficiently.
-            It allows students to add, edit, and delete classes, view their schedules, and receive notifications for upcoming classes.
-            The app uses a SQLite database to store class information and is built with a user-friendly interface to enhance the user experience.
-          </p>
-          <a href="https://github.com/symonmaina/class-schedule-app" class="btn btn-primary">View Project</a>
-        </div>
-      </div>
-    </div>
-    <!-- Section 3: Data Analysis Dashboard -->
-    <div class="col-md-4 mb-4">
-      <div class="card h-100">
-        <img src="{{ url_for('static', filename='images/dashboard.png') }}" class="card-img-top" alt="Data Analysis Dashboard" height = "200px" ">
-        <div class="card-body">
-          <h5 class="card-title">Data Analysis Dashboard</h5>
-          <p class="card-text">
-            An interactive dashboard for visualizing and analyzing data, created with Python, Pandas, and Plotly.
-          </p>
-          <a href="#" class="btn btn-primary">View Project</a>
-        </div>
-      </div>
-    </div>
+    {% endfor %}
   </div>
 </div>
 {% endblock %}
